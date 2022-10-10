@@ -9,3 +9,4 @@
 - asyncio starts a function and does other things and whenever you need that function to be finished, you can call await. exactly like a boomerang
 ## issue:
 - you cannot call you asyncio programm file ```asyncio```. [link](https://github.com/tornadoweb/tornado/issues/2868)
+- you cannot have a file named ```threading``` in the same directory. [link](https://stackoverflow.com/questions/41012121/attributeerror-module-object-has-no-attribute-rlock)

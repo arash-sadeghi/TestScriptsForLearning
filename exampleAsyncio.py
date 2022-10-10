@@ -15,22 +15,26 @@ async def main():
 
   #! testing gather:
   funcs = [func1 , func2]
-  await asyncio.gather(*[i in funcs]) #! star is for unpacking 
-  print('[+] end of main')
+  out = await asyncio.gather(*[i() for i in funcs]) #! star is for unpacking. also you should pass function with parantesis. otherwise only address of the function will be passed which causes error
+  #! gather causes await to wait for all of its argument functions to finish
+  #! out has the return value of functions in a list
+  print('[+] end of main',out)
 
 async def func(inp):
   print(f'[+] mana na vermisan got veran >>>{inp}')
   time.sleep(1)
   return inp+'_attached'
 
-async def func1(inp):
+async def func1():
   print('[+] func1 start')
   time.sleep(1)
   print('[+] func1 end')
+  return 'h'
 
 async def func2():
   for i in range(10):
     print(f'[+] func2 : {i}')
     time.sleep(0.25)
+  return 'i'
 
 asyncio.run(main())
